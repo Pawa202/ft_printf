@@ -11,8 +11,8 @@ int ft_putptr(unsigned long n)
     count += 2;
     if (n >= 16)
     {
-        ft_puthex(n / 16, 1);
-        ft_puthex(n % 16, 1);
+        ft_puthex(n / 16, 0);
+        ft_puthex(n % 16, 0);
         count++;
     }
     else

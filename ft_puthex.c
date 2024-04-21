@@ -1,22 +1,16 @@
 #include "ft_printf.h"
 
-int ft_puthex(unsigned int n , int upper)
+int ft_puthex(unsigned long long n , int upper)
 {
     char digit;
     int count;
 
     count = 0;
 
-    if (n >= 16  && upper == 0)
+    if (n >= 16)
     {
-        ft_puthex(n / 16, 0);
-        ft_puthex(n % 16, 0);
-        count++;
-    }
-    else if (n >= 16 && upper == 1)
-    {
-        ft_puthex(n / 16, 0);
-        ft_puthex(n % 16, 0);
+        ft_puthex(n / 16, upper);
+        ft_puthex(n % 16, upper);
         count++;
     }
     else if (upper == 0)
