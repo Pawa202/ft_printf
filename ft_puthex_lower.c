@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunbr.c                                       :+:      :+:    :+:   */
+/*   ft_puthex_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prutkows <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 13:48:13 by prutkows          #+#    #+#             */
-/*   Updated: 2024/04/22 13:48:14 by prutkows         ###   ########.fr       */
+/*   Created: 2024/04/22 13:32:02 by prutkows          #+#    #+#             */
+/*   Updated: 2024/04/22 13:32:04 by prutkows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putunbr(unsigned int n)
+int	ft_puthex_lower(unsigned long long n)
 {
 	char	digit;
 	int		count;
 
 	count = 1;
-	if (n >= 10)
+	if (n >= 16)
 	{
-		count += ft_putunbr(n / 10);
-		ft_putunbr(n % 10);
-		
+		count += ft_puthex_lower(n / 16);
+		ft_puthex_lower(n % 16);
 	}
 	else
 	{
-		digit = n + '0';
+		if (n < 10)
+			digit = n + '0';
+		else
+			digit = (n - 10) + 'a';
 		write(1, &digit, 1);
 	}
 	return (count);
