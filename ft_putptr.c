@@ -11,29 +11,35 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_putptr(unsigned long n)
+static int	ft_putptr_chars(unsigned long n)
 {
 	char	digit;
 	int		count;
 
 	count = 1;
-	write(1, "0x", 2);
-	count += 2;
 	if (n >= 16)
 	{
-		count += ft_puthex_lower(n / 16);
-		ft_puthex_lower(n % 16);
+		count += ft_putptr_chars(n / 16);
+		ft_putptr_chars(n % 16);
 	}
 	else
 	{
 		if (n < 10)
-		{
 			digit = n + '0';
-		}
 		else
 			digit = (n - 10) + 'a';
 		write(1, &digit, 1);
-		count++;
 	}
 	return (count);
+}
+int	ft_putptr(unsigned long n)
+{
+	if (!n)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
+
+	write(1, "0x", 2);
+	return (2 + ft_putptr_chars(n));
 }

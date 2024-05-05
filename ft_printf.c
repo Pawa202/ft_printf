@@ -29,7 +29,7 @@ static int	ft_parse_format(char c, va_list args)
 	else if (c == 'X')
 		count += ft_puthex_upper(va_arg(args, unsigned int));
 	else if (c == 'p')
-		count += ft_putptr(va_arg(args, unsigned long));
+		count += ft_putptr((unsigned long)va_arg(args, void *));
 	else if (c == '%')
 	{
 		write(1, "%", 1);
