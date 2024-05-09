@@ -24,5 +24,6 @@ int	ft_putunbr(unsigned int n);
 int	ft_puthex_lower(unsigned long long n);
 int	ft_puthex_upper(unsigned long long n);
 int	ft_putptr(unsigned long n);
+int	ft_putnbr_aux(int n);
 
 #endif
